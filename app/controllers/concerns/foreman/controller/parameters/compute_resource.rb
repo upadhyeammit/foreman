@@ -54,6 +54,11 @@ module Foreman::Controller::Parameters::ComputeResource
           :uuid,
           :caching_enabled
 
+        # alibaba
+        filter.permit :access_key_id,
+        :access_key_secret,
+        :auth_url
+
         add_taxonomix_params_filter(filter)
       end
     end

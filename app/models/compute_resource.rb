@@ -46,7 +46,8 @@ class ComputeResource < ApplicationRecord
       'Vmware'    => 'Foreman::Model::Vmware',
       'Openstack' => 'Foreman::Model::Openstack',
       'Rackspace' => 'Foreman::Model::Rackspace',
-      'GCE'       => 'Foreman::Model::GCE'
+      'GCE'       => 'Foreman::Model::GCE',
+      'ALIBABA'   => 'Foreman::Model::ALIBABA'
     }
   end
 

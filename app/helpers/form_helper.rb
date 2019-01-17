@@ -293,7 +293,9 @@ module FormHelper
   end
 
   def form_for(record_or_name_or_array, *args, &proc)
+    Rails.logger.info("**** form_for #{args.last}")
     if args.last.is_a?(Hash)
+      Rails.logger.info("*** I am in is_a hash")
       args.last[:html] = {:class => "form-horizontal well"}.merge(args.last[:html] || {})
     else
       args << {:html => {:class => "form-horizontal well"}}

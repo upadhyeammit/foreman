@@ -1,0 +1,17 @@
+<thead>
+  <tr>
+    <th><%= _('Name') %></th>
+    <th><%= _('Type') %></th>
+    <th><%= _('State') %></th>
+    <th><%= _('Actions') %></th>
+  </tr>
+</thead>
+<tbody>
+  <% @vms.each do |vm| %>
+    <tr>
+      <td><%= link_to_if_authorized vm['HostName'], hash_for_compute_resource_vm_path(:compute_resource_id => @compute_resource, :id => vm['InstanceId']).merge(:auth_object => @compute_resource, :auth_action => 'view', :authorizer => authorizer) %></td>
+      <td><%= vm['InstanceTypeFamily'] %></td>
+      <td><%= vm['Status'].downcase %></td>
+    </tr>
+  <% end %>
+</tbody>

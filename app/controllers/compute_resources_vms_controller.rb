@@ -134,6 +134,7 @@ class ComputeResourcesVmsController < ApplicationController
     else
       opts = {}
     end
-    @vms = @compute_resource.vms.all(opts)
+    #@vms = @compute_resource.vms.all(opts)
+    @vms = @compute_resource.vms
   end
 end

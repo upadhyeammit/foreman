@@ -107,6 +107,7 @@ class ComputeResourcesController < ApplicationController
   # ajax methods
   def provider_selected
     @compute_resource = ComputeResource.new_provider :provider => params[:provider]
+    Rails.logger.info("******* provider_selected #{@compute_resource}")
     render :partial => "compute_resources/form", :locals => { :compute_resource => @compute_resource }
   end
 
