@@ -4,6 +4,12 @@ module Foreman::Model
     #has_one :key_pair, :foreign_key => :compute_resource_id, :dependent => :destroy
     validates :access_key_id, :access_key_secret, :region, :auth_url, :zone, :url, :presence => true
 
+    def capabilities
+      [:image, :new_volume]
+    end
+
+
+
     def self.available?
       Fog::Compute.providers.include?(:google)
     end
@@ -55,6 +61,11 @@ module Foreman::Model
     def zones
       parse_json(client.list_zones.body, 'Zones', 'ZoneId')
     end
+
+    def available_images
+      client.images
+    end
+
 
     def zone=(name)
       attrs[:zone] = name
