@@ -3,19 +3,19 @@ module Foreman::Model
 
     #has_one :key_pair, :foreign_key => :compute_resource_id, :dependent => :destroy
     validates :access_key_id, :access_key_secret, :region, :auth_url, :zone, :url, :presence => true
-
+    delegate :flavors, :to => :client
     def capabilities
-      [:image, :new_volume]
+      #[:image, :new_volume]
+      [:image]
     end
-
-
 
     def self.available?
       Fog::Compute.providers.include?(:google)
     end
 
+
     def vms(opts = {})
-      client.servers.all
+      client.servers
     end
 
     def self.available?
@@ -66,7 +66,6 @@ module Foreman::Model
       client.images
     end
 
-
     def zone=(name)
       attrs[:zone] = name
     end
@@ -84,8 +83,9 @@ module Foreman::Model
     end
 
     def networks
-      parse_json(client.list_networks.body, 'Vpcs', 'VpcID')
+      client.vpcs
     end
+
 
     def disks
       parse_json(client.list_disks.body, 'Disks', 'DiskId')
@@ -98,13 +98,33 @@ module Foreman::Model
       ret_arr
     end
 
+=begin
     def new_volume(attrs = { })
-      size = (attrs[:size_gb] || 10)
-      args = {:name => attrs[:disk_name], :description => attrs[:disk_description], :category => attrs[:disk_category]}
+      size = '10'
+      #args = {:name => attrs[:disk_name], :description => attrs[:disk_description], :category => attrs[:disk_category]}
+      args = {:category => 'cloud_efficiency'}
       client.create_disk(size, args)
     end
-
-
+=end
+    def create_vm(args = { })
+      args = vm_instance_defaults.merge(args.to_h.symbolize_keys).deep_symbolize_keys
+      puts "+++++++i am in args#{args}"
+      if (name = args[:name])
+        args[:tags] = {:Name => name}
+      end
+      if (image_id = args[:image_id])
+        image = images.find_by_uuid(image_id.to_s)
+        args.merge!(iam_hash)
+      end
+      args[:groups].reject!(&:empty?) if args.has_key?(:groups)
+      args[:security_group_ids].reject!(&:empty?) if args.has_key?(:security_group_ids)
+      args[:associate_public_ip] = subnet_implies_is_vpc?(args) && args[:managed_ip] == 'public'
+      args[:private_ip_address] = args[:interfaces_attributes][:"0"][:ip]
+      super(args)
+    rescue Fog::Errors::Error => e
+      Foreman::Logging.exception("Unhandled EC2 error", e)
+      raise e
+    end
 
     def client
       @client ||= ::Fog::Compute.new(:provider => 'aliyun', :aliyun_accesskey_id => access_key_id, :aliyun_accesskey_secret => access_key_secret, :aliyun_region_id => region, :aliyun_zone_id => zone, :aliyun_url => url)
