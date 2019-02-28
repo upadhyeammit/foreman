@@ -87,6 +87,7 @@ module Foreman::Model
     end
 
 
+
     def disks
       parse_json(client.list_disks.body, 'Disks', 'DiskId')
     end
