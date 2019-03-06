@@ -47,7 +47,7 @@ class ComputeResource < ApplicationRecord
       'Openstack' => 'Foreman::Model::Openstack',
       'Rackspace' => 'Foreman::Model::Rackspace',
       'GCE'       => 'Foreman::Model::GCE',
-      'ALIBABA'   => 'Foreman::Model::ALIBABA'
+      #'ALIBABA'   => 'ForemanAlibaba::Alibaba'
     }
   end
 
