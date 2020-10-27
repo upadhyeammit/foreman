@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the foreman package.
 #
 # Translators:
-# trendspotter <j.podhorecky@volny.cz>, 2020
+# Jiří Podhorecký, 2020
 # Lukáš Zapletal, 2013
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018-2020
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Foreman\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2020-08-26 21:36+0000\n"
-"Last-Translator: trendspotter <j.podhorecky@volny.cz>\n"
+"Last-Translator: Jiří Podhorecký\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/foreman/forema"
 "n/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
