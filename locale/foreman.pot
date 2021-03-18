@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: foreman 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-10 13:26+0530\n"
-"PO-Revision-Date: 2021-03-10 13:26+0530\n"
+"POT-Creation-Date: 2021-03-18 13:36+0530\n"
+"PO-Revision-Date: 2021-03-18 13:36+0530\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,25 +18,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../app/assets/javascripts/application.js:70
+#: ../app/assets/javascripts/application.js:74
 msgid "Failed to fetch: "
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:229
+#: ../app/assets/javascripts/application.js:233
 msgid "Sorry but no templates were configured."
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:389
+#: ../app/assets/javascripts/application.js:393
 #: ../app/models/config_report.rb:81
 msgid "Success"
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:393
+#: ../app/assets/javascripts/application.js:397
 #: ../app/helpers/layout_helper.rb:158 ../app/models/host_status/global.rb:36
 msgid "Warning"
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:397
+#: ../app/assets/javascripts/application.js:401
 #: ../app/controllers/application_controller.rb:377
 #: ../app/helpers/dashboard_helper.rb:59 ../app/helpers/layout_helper.rb:164
 #: ../app/models/host_status/configuration_status.rb:71
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:433
+#: ../app/assets/javascripts/application.js:437
 msgid "Unknown power state"
 msgstr ""
 
-#: ../app/assets/javascripts/application.js:461
+#: ../app/assets/javascripts/application.js:465
 msgid "Exit Full Screen"
 msgstr ""
 
@@ -4329,7 +4329,7 @@ msgstr ""
 msgid "Could not generate the report, check the form for error messages"
 msgstr ""
 
-#: ../app/controllers/roles_controller.rb:76
+#: ../app/controllers/roles_controller.rb:74
 msgid "Filters overriding has been disabled"
 msgstr ""
 
